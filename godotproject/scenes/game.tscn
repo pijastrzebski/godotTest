@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://ckr3560tjhkbj"]
+
+[ext_resource type="PackedScene" uid="uid://mcampfpu2yc5" path="res://scenes/mainCharacter.tscn" id="1_lgy8j"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iwayd"]
+size = Vector2(261, 20)
+
+[node name="Game" type="Game"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Mage" parent="." instance=ExtResource("1_lgy8j")]
+position = Vector2(-145.564, 335.972)
+scale = Vector2(1, 0.999999)
+velocity = Vector2(0, 0)
+
+[node name="Platform" type="StaticBody2D" parent="."]
+position = Vector2(-50, 122)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform"]
+position = Vector2(-126, 102)
+shape = SubResource("RectangleShape2D_iwayd")

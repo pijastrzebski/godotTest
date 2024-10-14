@@ -1,0 +1,61 @@
+[gd_scene load_steps=9 format=3 uid="uid://mcampfpu2yc5"]
+
+[ext_resource type="Texture2D" uid="uid://bcadg3vmv8kdg" path="res://assets/sprites/green-mage-4-frames.png" id="1_fmf4f"]
+
+[sub_resource type="GDScript" id="GDScript_8uqim"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ml86s"]
+atlas = ExtResource("1_fmf4f")
+region = Rect2(20, 0, 200, 368)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uxsul"]
+atlas = ExtResource("1_fmf4f")
+region = Rect2(220, 0, 200, 368)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0p1io"]
+atlas = ExtResource("1_fmf4f")
+region = Rect2(420, 0, 200, 368)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h6isn"]
+atlas = ExtResource("1_fmf4f")
+region = Rect2(620, 0, 200, 368)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_82m8o"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ml86s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uxsul")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0p1io")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h6isn")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gnb24"]
+radius = 18.0
+height = 270.0
+
+[node name="Mage" type="GodotCustomCharacterBody"]
+position = Vector2(-1, 1.91947e+09)
+velocity = Vector2(0, 840897)
+script = SubResource("GDScript_8uqim")
+
+[node name="GodotCustomAnimatedSprite" type="GodotCustomAnimatedSprite" parent="."]
+position = Vector2(-2.9863, -291.85)
+sprite_frames = SubResource("SpriteFrames_82m8o")
+autoplay = "default"
+frame = 2
+frame_progress = 0.668633
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-31, -257)
+shape = SubResource("CapsuleShape2D_gnb24")

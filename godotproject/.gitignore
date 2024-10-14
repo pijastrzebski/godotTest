@@ -1,0 +1,13 @@
+# Godot 4+ specific ignores
+.godot/
+/android/
+
+# Binaries
+*.obj
+*.dblite
+*.pdb
+*.lib
+*.dll
+*.exe
+*.exp
+*.ilk

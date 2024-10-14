@@ -1,0 +1,37 @@
+[gd_scene load_steps=2 format=3 uid="uid://c62ose8gn8lgr"]
+
+[sub_resource type="Theme" id="Theme_uahrl"]
+
+[node name="Menu" type="Menu"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="title" type="Title" parent="VBoxContainer"]
+layout_mode = 2
+bbcode_enabled = true
+text = "[font_size=30] [wave amp=25 connected=0] The Game "
+fit_content = true
+autowrap_mode = 0
+
+[node name="start" type="StartButton" parent="VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_uahrl")
+text = "Start"
+
+[node name="options" type="OptionsButton" parent="VBoxContainer"]
+layout_mode = 2
+text = "Options"
+
+[node name="exit" type="ExitButton" parent="VBoxContainer"]
+layout_mode = 2
+text = "Exit"
