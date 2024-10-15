@@ -44,8 +44,10 @@ void Game::getInput()
 	// handle each key
 	if (escape)
 	{
-		if (!m_menu)
+		auto menu = get_node<Menu>("/root/Main/Menu");
+		if (!menu)
 		{
+			UtilityFunctions::print("menu detected");
 			// make this scene transparent
 			auto canvas = cast_to<CanvasItem>(this);
 			if (canvas)
@@ -59,17 +61,17 @@ void Game::getInput()
 			Ref<PackedScene> ref = ResourceLoader::get_singleton()->load("res://scenes/menu.tscn");
 			if (ref->can_instantiate())
 			{
-				m_menu = ref->instantiate();
-				get_parent()->add_child(m_menu);
-				m_menu->connect("tree_exited", Callable(this, "restoreOpacity"));
-				ClassDB::bind_method(D_METHOD("restoreOpacity"), &Game::restoreOpacity);
+				get_parent()->add_child(ref->instantiate());
 			}
 		}
 		else
 		{
+			UtilityFunctions::print("there's no menu");
+			restoreOpacity();
+
 			// clean menu
-			m_menu->queue_free();
-			m_menu = nullptr;
+			menu->get_parent()->remove_child(menu);
+			menu->queue_free();
 		}
 		m_keyPressed = true;
 	}

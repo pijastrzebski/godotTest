@@ -9,6 +9,7 @@
 
 #include "exitbutton.hpp"
 #include "game.hpp"
+#include "main.hpp"
 #include "menu.hpp"
 #include "options.hpp"
 #include "optionsbutton.hpp"
@@ -43,6 +44,7 @@ void GodotRegisterTypes::initializeTestLibModule(ModuleInitializationLevel level
 	GDREGISTER_CLASS(GodotCustomText)
 	GDREGISTER_CLASS(GodotCustomButton)
 
+	GDREGISTER_CLASS(Main)
 	GDREGISTER_CLASS(Game)
 	GDREGISTER_CLASS(Menu)
 	GDREGISTER_CLASS(Title)

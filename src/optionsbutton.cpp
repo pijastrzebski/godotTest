@@ -26,16 +26,18 @@ void OptionsButton::showOptions()
 	Ref<PackedScene> ref = ResourceLoader::get_singleton()->load("res://scenes/options.tscn");
 	if (ref->can_instantiate())
 	{
-		Options::s_instance = ref->instantiate();
-		get_parent()->add_child(Options::s_instance);
+		auto options = ref->instantiate();
+		get_parent()->add_child(options);
 	}
 }
 
 void OptionsButton::closeOptions()
 {
-	if (Options::s_instance)
+	auto options = get_node<Options>("/root/Main/Menu/VBoxContainer/Options");
+
+	if (options)
 	{
-		Options::s_instance->queue_free();
-		Options::s_instance = nullptr;
+		options->get_parent()->remove_child(options);
+		options->queue_free();
 	}
 }

@@ -22,6 +22,7 @@ set(SRC_FILES
   src/godotcustomtext.cpp
   src/godotcustombutton.cpp
 
+  src/main.cpp
   src/menu.cpp
   src/title.cpp
   src/startbutton.cpp
@@ -41,6 +42,7 @@ set(HEADER_FILES
   src/godotcustomtext.hpp
   src/godotcustombutton.hpp
 
+  src/main.hpp
   src/menu.hpp
   src/title.hpp
   src/startbutton.hpp

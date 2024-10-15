@@ -32,12 +32,13 @@ void StartButton::start()
 	if (ref->can_instantiate())
 	{
 		// add created node
-		Game::s_instance = ref->instantiate();
+		auto game = ref->instantiate();
 		auto mainNode = get_node<Node2D>("/root/Main");
-		mainNode->add_child(Game::s_instance);
+		mainNode->add_child(game);
 
 		//auto menuNode = get_parent()->get_parent();
 		auto menuNode = get_node<Menu>("/root/Main/Menu");
+		menuNode->get_parent()->remove_child(menuNode);
 		menuNode->queue_free();
 	}
 
@@ -65,9 +66,9 @@ void StartButton::start()
 
 void StartButton::closeGame()
 {
-	if (auto game = Game::s_instance)
+	if (auto game = get_node<Game>("/root/Main/Game"); game)
 	{
+		game->get_parent()->remove_child(game);
 		game->queue_free();
-		game = nullptr;
 	}
 }

@@ -37,11 +37,9 @@ void Options::getInput()
 
 	if (escape)
 	{
-		if (s_instance)
-		{
-			s_instance->queue_free();
-			s_instance = nullptr;
-		}
+		// clean menu
+		get_parent()->remove_child(this);
+		queue_free();
 		m_keyPressed = true;
 	}
 }

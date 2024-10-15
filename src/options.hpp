@@ -9,8 +9,6 @@ class Options : public GodotCustomControl
 	GDCLASS(Options, GodotCustomControl)
 
 public:
-	static inline Node* s_instance = nullptr;
-
 	void _process(double delta) override;
 	void _ready() override;
 

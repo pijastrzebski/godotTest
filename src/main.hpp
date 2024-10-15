@@ -4,9 +4,9 @@
 
 using namespace godot;
 
-class Game : public Node2D
+class Main : public Node2D
 {
-	GDCLASS(Game, Node2D)
+	GDCLASS(Main, Node2D)
 
 public:
 	void _process(double delta) override;
@@ -15,10 +15,4 @@ public:
 protected:
 	static void _bind_methods();
 
-	void getInput();
-
-private:
-	void restoreOpacity();
-
-	bool m_keyPressed = false;
 };
