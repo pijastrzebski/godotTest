@@ -18,6 +18,5 @@ void ExitButton::_bind_methods()
 
 void ExitButton::exit()
 {
-	UtilityFunctions::print("ExitButton exit()");
 	get_tree()->quit();
 }

@@ -16,5 +16,7 @@ protected:
 	static void _bind_methods();
 
 	void start();
+	void closeGame();
 
+private:
 };

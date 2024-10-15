@@ -1,8 +1,12 @@
 #include "startbutton.hpp"
 
+#include "game.hpp"
+#include "menu.hpp"
 #include "godot_cpp/classes/resource_loader.hpp"
 #include "godot_cpp/classes/scene_tree.hpp"
 #include "godot_cpp/variant/utility_functions.hpp"
+#include "godot_cpp/classes/packed_scene.hpp"
+#include "godot_cpp/classes/window.hpp"
 
 void StartButton::_process(double delta)
 {
@@ -10,10 +14,7 @@ void StartButton::_process(double delta)
 
 void StartButton::_ready()
 {
-	UtilityFunctions::print("StartButton is ready");
-
 	connect("pressed", Callable(this, "start"));
-
 }
 
 void StartButton::_bind_methods() 
@@ -23,9 +24,23 @@ void StartButton::_bind_methods()
 
 void StartButton::start()
 {
-	UtilityFunctions::print("start()");
+	//get_tree()->change_scene_to_file("res://scenes/game.tscn");
 
-	get_tree()->change_scene_to_file("res://scenes/game.tscn");
+	closeGame();
+
+	Ref<PackedScene> ref = ResourceLoader::get_singleton()->load("res://scenes/game.tscn");
+	if (ref->can_instantiate())
+	{
+		// add created node
+		Game::s_instance = ref->instantiate();
+		auto mainNode = get_node<Node2D>("/root/Main");
+		mainNode->add_child(Game::s_instance);
+
+		//auto menuNode = get_parent()->get_parent();
+		auto menuNode = get_node<Menu>("/root/Main/Menu");
+		menuNode->queue_free();
+	}
+
 
 	// how to switch scenes?
 
@@ -46,4 +61,13 @@ void StartButton::start()
 	//	add_child(nextNode);
 	//	cast_to<Game>(nextNode)->set_visible(true);
 	//}
+}
+
+void StartButton::closeGame()
+{
+	if (auto game = Game::s_instance)
+	{
+		game->queue_free();
+		game = nullptr;
+	}
 }

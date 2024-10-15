@@ -50,7 +50,6 @@ set(HEADER_FILES
   src/exitbutton.hpp
 )
 
-
 # Add executable target
 add_library (godotTestLib STATIC ${SRC_FILES} ${HEADER_FILES})
 

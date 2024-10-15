@@ -23,8 +23,6 @@ void Game::_bind_methods()
 
 void Game::getInput()
 {
-	UtilityFunctions::print("Game getInput()");
-
 	// check key
 	auto escape = Input::get_singleton()->is_key_pressed(KEY_ESCAPE);
 
@@ -48,9 +46,8 @@ void Game::getInput()
 	{
 		if (!m_menu)
 		{
-			// make scene transparent
-			auto currentScene = get_tree()->get_current_scene();
-			auto canvas = cast_to<CanvasItem>(currentScene);
+			// make this scene transparent
+			auto canvas = cast_to<CanvasItem>(this);
 			if (canvas)
 			{
 				canvas->set_modulate(Color(1, 1, 1, 0.2f));
@@ -64,7 +61,6 @@ void Game::getInput()
 			{
 				m_menu = ref->instantiate();
 				get_parent()->add_child(m_menu);
-				cast_to<Menu>(m_menu)->set_visible(true);
 				m_menu->connect("tree_exited", Callable(this, "restoreOpacity"));
 				ClassDB::bind_method(D_METHOD("restoreOpacity"), &Game::restoreOpacity);
 			}
@@ -81,8 +77,7 @@ void Game::getInput()
 
 void Game::restoreOpacity()
 {
-	auto currentScene = get_tree()->get_current_scene();
-	auto canvas = cast_to<CanvasItem>(currentScene);
+	auto canvas = cast_to<CanvasItem>(this);
 	if (canvas)
 	{
 		canvas->set_modulate(Color(1, 1, 1, 1));

@@ -9,6 +9,8 @@ class Game : public Node2D
 	GDCLASS(Game, Node2D)
 
 public:
+	inline static Node* s_instance = nullptr;
+
 	void _process(double delta) override;
 	void _ready() override;
 

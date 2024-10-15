@@ -53,8 +53,6 @@ void GodotCustomCharacterBody::_physics_process(double delta)
 
 void GodotCustomCharacterBody::_ready()
 {
-	UtilityFunctions::print("GodotCustomCharacterBody _ready()");
-	
 	connect("velocityChanged", Callable(this, "onVelocityChanged"));
 }
 

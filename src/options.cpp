@@ -37,7 +37,11 @@ void Options::getInput()
 
 	if (escape)
 	{
-		queue_free();
+		if (s_instance)
+		{
+			s_instance->queue_free();
+			s_instance = nullptr;
+		}
 		m_keyPressed = true;
 	}
 }
