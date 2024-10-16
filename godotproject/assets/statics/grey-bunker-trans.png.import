@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bcadg3vmv8kdg"
-path="res://.godot/imported/green-mage-4-frames.png-c9406fe5815bf2340d26fab6e616d31e.ctex"
+uid="uid://dt3dk870mt0r6"
+path="res://.godot/imported/grey-bunker-trans.png-429257b057472779a0282f8e6bdc3490.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/green-mage-4-frames.png"
-dest_files=["res://.godot/imported/green-mage-4-frames.png-c9406fe5815bf2340d26fab6e616d31e.ctex"]
+source_file="res://assets/statics/grey-bunker-trans.png"
+dest_files=["res://.godot/imported/grey-bunker-trans.png-429257b057472779a0282f8e6bdc3490.ctex"]
 
 [params]
 

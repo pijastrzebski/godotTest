@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://cltroal7vnn43"]
+
+[ext_resource type="Texture2D" uid="uid://c4plwv2cx60ns" path="res://assets/statics/grey-bunker-trans-pixelate-16x.png" id="1_h4f8h"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wijgp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_h4f8h")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ufyu3"]
+size = Vector2(53.1481, 13.2459)
+
+[node name="Bunker" type="Bunker"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(-5, 2.00001)
+scale = Vector2(0.113827, 0.099593)
+sprite_frames = SubResource("SpriteFrames_wijgp")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-5, 3)
+rotation = -3.14159
+scale = Vector2(0.547145, -0.843543)
+shape = SubResource("RectangleShape2D_ufyu3")

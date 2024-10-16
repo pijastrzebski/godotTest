@@ -33,7 +33,7 @@ void OptionsButton::showOptions()
 
 void OptionsButton::closeOptions()
 {
-	auto options = get_node<Options>("/root/Main/Menu/VBoxContainer/Options");
+	auto options = get_node_or_null("/root/Main/Menu/VBoxContainer/Options");
 
 	if (options)
 	{

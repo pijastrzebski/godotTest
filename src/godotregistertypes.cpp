@@ -1,5 +1,6 @@
 #include "godotregistertypes.hpp"
 
+#include "bunker.hpp"
 #include "godotcustomanimatedsprite.hpp"
 #include "godotcustombutton.hpp"
 #include "godotcustomcharacterbody.hpp"
@@ -52,6 +53,8 @@ void GodotRegisterTypes::initializeTestLibModule(ModuleInitializationLevel level
 	GDREGISTER_CLASS(OptionsButton)
 	GDREGISTER_CLASS(StartButton)
 	GDREGISTER_CLASS(ExitButton)
+
+	GDREGISTER_CLASS(Bunker)
 
 }
 

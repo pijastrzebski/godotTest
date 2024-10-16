@@ -66,7 +66,7 @@ void StartButton::start()
 
 void StartButton::closeGame()
 {
-	if (auto game = get_node<Game>("/root/Main/Game"); game)
+	if (auto game = get_node_or_null("/root/Main/Game"); game)
 	{
 		game->get_parent()->remove_child(game);
 		game->queue_free();

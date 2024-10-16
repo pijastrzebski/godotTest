@@ -15,6 +15,7 @@ void Game::_process(double delta)
 
 void Game::_ready()
 {
+	restoreOpacity();
 }
 
 void Game::_bind_methods()
@@ -24,7 +25,7 @@ void Game::_bind_methods()
 void Game::getInput()
 {
 	// check key
-	auto escape = Input::get_singleton()->is_key_pressed(KEY_ESCAPE);
+	auto f10 = Input::get_singleton()->is_key_pressed(KEY_F10);
 
 	// handle key pressed -> if previously pressed
 	if (m_keyPressed)
@@ -42,9 +43,9 @@ void Game::getInput()
 	}
 
 	// handle each key
-	if (escape)
+	if (f10)
 	{
-		auto menu = get_node<Menu>("/root/Main/Menu");
+		auto menu = get_node_or_null("/root/Main/Menu");
 		if (!menu)
 		{
 			UtilityFunctions::print("menu detected");

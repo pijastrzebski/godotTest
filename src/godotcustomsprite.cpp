@@ -12,20 +12,20 @@ void GodotCustomSprite::_process(double delta)
 {
 	m_timePassed += delta;
 
-	const auto newPos = Vector2(
-		static_cast<real_t>(10.0 * sin(m_timePassed * 2.0)),
-		static_cast<real_t>(10.0 + (10.0 * cos(m_timePassed * 1.5)))
-	);
+	//const auto newPos = Vector2(
+	//	static_cast<real_t>(10.0 * sin(m_timePassed * 2.0)),
+	//	static_cast<real_t>(10.0 + (10.0 * cos(m_timePassed * 1.5)))
+	//);
 
-	set_position(newPos);
+	//set_position(newPos);
 }
 
 void GodotCustomSprite::_bind_methods()
 {
-	ClassDB::bind_method(D_METHOD("getAmplitude"), &GodotCustomSprite::getAmplitude);
-	ClassDB::bind_method(D_METHOD("setAmplitude"), &GodotCustomSprite::setAmplitude);
+	//ClassDB::bind_method(D_METHOD("getAmplitude"), &GodotCustomSprite::getAmplitude);
+	//ClassDB::bind_method(D_METHOD("setAmplitude"), &GodotCustomSprite::setAmplitude);
 
-	ADD_PROPERTY(PropertyInfo(Variant::FLOAT, "amplitude"), "setAmplitude", "getAmplitude");
+	//ADD_PROPERTY(PropertyInfo(Variant::FLOAT, "amplitude"), "setAmplitude", "getAmplitude");
 }
 
 double GodotCustomSprite::getAmplitude()

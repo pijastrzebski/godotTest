@@ -14,6 +14,7 @@ add_subdirectory(godot-cpp)
 
 # Add src files
 set(SRC_FILES 
+  # templates
   src/godotcustomsprite.cpp
   src/godotregistertypes.cpp
   src/godotcustomanimatedsprite.cpp
@@ -21,7 +22,7 @@ set(SRC_FILES
   src/godotcustomcontrol.cpp
   src/godotcustomtext.cpp
   src/godotcustombutton.cpp
-
+  # core game components
   src/main.cpp
   src/menu.cpp
   src/title.cpp
@@ -30,10 +31,13 @@ set(SRC_FILES
   src/game.cpp
   src/options.cpp
   src/exitbutton.cpp
+  # the bunker game
+  src/bunker.cpp
 )
 
 # Add header files
 set(HEADER_FILES
+  # templates
   src/godotcustomsprite.hpp
   src/godotregistertypes.hpp
   src/godotcustomanimatedsprite.hpp
@@ -41,7 +45,7 @@ set(HEADER_FILES
   src/godotcustomcontrol.hpp
   src/godotcustomtext.hpp
   src/godotcustombutton.hpp
-
+  # core game components
   src/main.hpp
   src/menu.hpp
   src/title.hpp
@@ -50,6 +54,8 @@ set(HEADER_FILES
   src/game.hpp
   src/options.hpp
   src/exitbutton.hpp
+  # the bunker game
+  src/bunker.hpp
 )
 
 # Add executable target
