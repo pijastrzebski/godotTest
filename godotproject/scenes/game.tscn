@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://ckr3560tjhkbj"]
 
-[ext_resource type="Texture2D" uid="uid://ck44hj7tdw8r2" path="res://assets/background/outer-planet-landscape.jpeg" id="1_1huso"]
 [ext_resource type="PackedScene" uid="uid://cltroal7vnn43" path="res://scenes/bunker.tscn" id="1_6lx22"]
+[ext_resource type="Texture2D" uid="uid://cbh0yjd13odaj" path="res://assets/background/landscape_outer_planet-2.png" id="1_svctp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iwayd"]
 size = Vector2(1180, 20)
@@ -11,12 +11,12 @@ size = Vector2(1180, 20)
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="Landscape" type="Sprite2D" parent="."]
-position = Vector2(-6, -262)
+position = Vector2(26, -311)
 scale = Vector2(1.15, 1.15)
-texture = ExtResource("1_1huso")
+texture = ExtResource("1_svctp")
 
 [node name="Bunker" parent="." instance=ExtResource("1_6lx22")]
-position = Vector2(2, 195)
+position = Vector2(3, 191)
 
 [node name="Platform" type="StaticBody2D" parent="."]
 position = Vector2(-50, 122)

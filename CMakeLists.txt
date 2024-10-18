@@ -33,6 +33,7 @@ set(SRC_FILES
   src/exitbutton.cpp
   # the bunker game
   src/bunker.cpp
+  src/machinegun.cpp
 )
 
 # Add header files
@@ -56,6 +57,7 @@ set(HEADER_FILES
   src/exitbutton.hpp
   # the bunker game
   src/bunker.hpp
+  src/machinegun.hpp
 )
 
 # Add executable target

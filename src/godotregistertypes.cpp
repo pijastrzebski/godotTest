@@ -10,6 +10,7 @@
 
 #include "exitbutton.hpp"
 #include "game.hpp"
+#include "machinegun.hpp"
 #include "main.hpp"
 #include "menu.hpp"
 #include "options.hpp"
@@ -55,6 +56,7 @@ void GodotRegisterTypes::initializeTestLibModule(ModuleInitializationLevel level
 	GDREGISTER_CLASS(ExitButton)
 
 	GDREGISTER_CLASS(Bunker)
+	GDREGISTER_CLASS(MachineGun)
 
 }
 

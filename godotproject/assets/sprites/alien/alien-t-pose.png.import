@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://blkl2kij1pnmc"
-path="res://.godot/imported/grey-bunker-trans-pixelate.png-9a7a9e1cef5e2c2426f0738ba5993ac3.ctex"
+uid="uid://dm5bwkdajb4ur"
+path="res://.godot/imported/alien-t-pose.png-9567b0ea158b98ac2f48b31b649d6bf7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/statics/grey-bunker-trans-pixelate.png"
-dest_files=["res://.godot/imported/grey-bunker-trans-pixelate.png-9a7a9e1cef5e2c2426f0738ba5993ac3.ctex"]
+source_file="res://assets/sprites/alien/alien-t-pose.png"
+dest_files=["res://.godot/imported/alien-t-pose.png-9567b0ea158b98ac2f48b31b649d6bf7.ctex"]
 
 [params]
 

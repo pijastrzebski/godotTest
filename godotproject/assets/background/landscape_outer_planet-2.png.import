@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c4plwv2cx60ns"
-path="res://.godot/imported/grey-bunker-trans-pixelate-16x.png-609e5e4383f90111503b29837123c3aa.ctex"
+uid="uid://cbh0yjd13odaj"
+path="res://.godot/imported/landscape_outer_planet-2.png-8b99e0005898bc0c9bd8d637052a29fc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/statics/grey-bunker-trans-pixelate-16x.png"
-dest_files=["res://.godot/imported/grey-bunker-trans-pixelate-16x.png-609e5e4383f90111503b29837123c3aa.ctex"]
+source_file="res://assets/background/landscape_outer_planet-2.png"
+dest_files=["res://.godot/imported/landscape_outer_planet-2.png-8b99e0005898bc0c9bd8d637052a29fc.ctex"]
 
 [params]
 
