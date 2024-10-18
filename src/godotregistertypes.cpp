@@ -1,5 +1,6 @@
 #include "godotregistertypes.hpp"
 
+#include "bullet.hpp"
 #include "bunker.hpp"
 #include "godotcustomanimatedsprite.hpp"
 #include "godotcustombutton.hpp"
@@ -57,6 +58,7 @@ void GodotRegisterTypes::initializeTestLibModule(ModuleInitializationLevel level
 
 	GDREGISTER_CLASS(Bunker)
 	GDREGISTER_CLASS(MachineGun)
+	GDREGISTER_CLASS(Bullet)
 
 }
 

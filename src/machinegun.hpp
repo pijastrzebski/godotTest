@@ -17,5 +17,7 @@ protected:
 	static void _bind_methods();
 
 	void getInput();
+
 private:
+	bool m_shootReady = true;
 };
