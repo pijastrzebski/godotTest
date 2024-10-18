@@ -1,7 +1,7 @@
 #include "machinegun.hpp"
 
 #include "bullet.hpp"
-#include "godot_cpp/classes/character_body2d.hpp"
+#include "godot_cpp/classes/animated_sprite2d.hpp"
 #include "godot_cpp/classes/input.hpp"
 #include "godot_cpp/classes/marker2d.hpp"
 #include "godot_cpp/classes/packed_scene.hpp"
@@ -20,18 +20,26 @@ void MachineGun::getInput()
 	if (up)
 	{
 		UtilityFunctions::print("MachineGun::getInput up");
+		m_direction = UP;
 	}
 	if (right)
 	{
 		UtilityFunctions::print("MachineGun::getInput right");
+		m_direction = RIGHT;
+		auto sprite = get_node<AnimatedSprite2D>("Sprite");
+		sprite->set_flip_h(false);
 	}
 	if (left)
 	{
 		UtilityFunctions::print("MachineGun::getInput left");
+		m_direction = LEFT;
+		auto sprite = get_node<AnimatedSprite2D>("Sprite");
+		sprite->set_flip_h(true);
 	}
 	if (down)
 	{
 		UtilityFunctions::print("MachineGun::getInput down");
+		m_direction = DOWN;
 	}
 	if (shoot & m_shootReady)
 	{
@@ -40,10 +48,21 @@ void MachineGun::getInput()
 		Ref<PackedScene> ref = ResourceLoader::get_singleton()->load("res://scenes/bullet.tscn");
 		auto bullet = cast_to<Bullet>(ref->instantiate());
 		auto startPos = get_node<Marker2D>("StartPos");
-		bullet->rotate(Math::deg_to_rad(90.f));
-		bullet->set_position(startPos->get_position());
+		if (m_direction == RIGHT)
+		{
+			bullet->rotate(Math::deg_to_rad(90.f));
+			bullet->set_position(startPos->get_position());
+		} else if (m_direction == LEFT)
+		{
+			bullet->rotate(Math::deg_to_rad(270.f));
+			bullet->set_position(-1.0 * startPos->get_position());
+		}
 		add_child(bullet);
 		m_shootReady = false;
+
+		// todo make bullets follow weapon angle
+		// todo add aim line?
+		// todo add crosshair object which sends pos
 	}
 
 	if (!m_shootReady)

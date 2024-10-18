@@ -22,8 +22,8 @@ radius = 43.6152
 height = 816.307
 
 [node name="Bullet" type="Bullet"]
-position = Vector2(774623, 232435)
-velocity = Vector2(70, 0)
+position = Vector2(1.59454e+07, 232435)
+velocity = Vector2(77899.4, 0)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.1, 0.1)

@@ -81,7 +81,7 @@ position = Vector2(-5, 2.00001)
 scale = Vector2(0.113827, 0.099593)
 sprite_frames = SubResource("SpriteFrames_wijgp")
 autoplay = "default"
-frame_progress = 0.305633
+frame_progress = 0.0206827
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-5, 3)
@@ -90,18 +90,19 @@ scale = Vector2(0.547145, -0.843543)
 shape = SubResource("RectangleShape2D_ufyu3")
 
 [node name="MachineGun" type="MachineGun" parent="."]
+position = Vector2(1, -49)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MachineGun"]
-position = Vector2(-4, -47)
+position = Vector2(-5.52, 2)
 shape = SubResource("CircleShape2D_8pk4j")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="MachineGun"]
-position = Vector2(1, -48)
+[node name="Sprite" type="AnimatedSprite2D" parent="MachineGun"]
+position = Vector2(-0.52, 1)
 scale = Vector2(0.154, 0.2)
 sprite_frames = SubResource("SpriteFrames_ub0ec")
 animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.167586
+frame_progress = 0.0258081
 
 [node name="StartPos" type="Marker2D" parent="MachineGun"]
-position = Vector2(54, -54)
+position = Vector2(52.48, -5)
