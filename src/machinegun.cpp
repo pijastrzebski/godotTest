@@ -55,7 +55,7 @@ void MachineGun::getInput(double delta)
 		//Vector2 direction = Vector2(cos(Math::deg_to_rad(m_angle)), sin(Math::deg_to_rad(m_angle)));
 		//bullet->set_position(direction); // todo: improve start position of the bullet
 		bullet->set_position(startPos->get_position());
-		bullet->rotate(Math::deg_to_rad(m_angle + 90.f));
+		bullet->rotate(static_cast<float>(Math::deg_to_rad(m_angle + 90.f)));
 		// add the node
 		add_child(bullet);
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://b0i2thierjeil"]
+[gd_scene load_steps=6 format=3 uid="uid://b0i2thierjeil"]
 
 [ext_resource type="Texture2D" uid="uid://b4wgwrp06cfil" path="res://assets/sprites/bullets/modern-nuclear-bomb.png" id="1_mmwfl"]
 
@@ -21,6 +21,11 @@ animations = [{
 radius = 43.6152
 height = 816.307
 
+[sub_resource type="Curve" id="Curve_yyrpq"]
+max_value = 5.0
+_data = [Vector2(0, 4.56044), 0.0, 0.0, 0, 0, Vector2(0.988764, 0.010989), 0.0, 0.0, 0, 0]
+point_count = 2
+
 [node name="Bullet" type="Bullet"]
 position = Vector2(1.59454e+07, 232435)
 velocity = Vector2(77899.4, 0)
@@ -31,7 +36,22 @@ sprite_frames = SubResource("SpriteFrames_nb7dx")
 animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -1)
 rotation = -3.14159
 scale = Vector2(0.0687834, -0.0661516)
 shape = SubResource("CapsuleShape2D_mpwlb")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2(0, 28)
+amount = 50
+lifetime = 0.4
+preprocess = 0.1
+lifetime_randomness = 0.4
+emission_shape = 1
+emission_sphere_radius = 1.0
+direction = Vector2(-1, 12)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 50.0
+initial_velocity_max = 60.0
+scale_amount_curve = SubResource("Curve_yyrpq")
+color = Color(1, 0.411765, 0.196078, 0.458824)

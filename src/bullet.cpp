@@ -7,18 +7,14 @@ constexpr auto SPEED = 200;
 
 void Bullet::_physics_process(double delta)
 {
-	m_velocity = m_direction * SPEED * delta;
-	auto collide = move_and_collide(m_velocity);
-	if (collide.is_valid())
-	{
-		UtilityFunctions::print("collide");
-	}
+	m_velocity = m_direction * SPEED * static_cast<float>(delta);
+	const auto collide = move_and_collide(m_velocity);
 }
 
 void Bullet::_ready()
 {
-	auto machineGun = cast_to<MachineGun>(get_parent());
-	auto angle_radians = static_cast<float>(Math::deg_to_rad(machineGun->getAngle()));
+	const auto machineGun = cast_to<MachineGun>(get_parent());
+	const auto angle_radians = static_cast<float>(Math::deg_to_rad(machineGun->getAngle()));
 	m_direction = Vector2(cos(angle_radians), sin(angle_radians));
 }
 
