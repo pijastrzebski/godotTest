@@ -19,5 +19,6 @@ protected:
 
 private:
 	Vector2 m_velocity;
-	int m_direction = 1;
+	Vector2 m_direction;
+	Vector2 m_position;
 };

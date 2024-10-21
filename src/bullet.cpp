@@ -1,44 +1,25 @@
 #include "bullet.hpp"
 
 #include "machinegun.hpp"
+#include "godot_cpp/variant/utility_functions.hpp"
 
 constexpr auto SPEED = 200;
 
 void Bullet::_physics_process(double delta)
 {
-	m_velocity.x += m_direction * static_cast<real_t>(SPEED * delta);
-	set_velocity(m_velocity);
-	move_and_slide();
+	m_velocity = m_direction * SPEED * delta;
+	auto collide = move_and_collide(m_velocity);
+	if (collide.is_valid())
+	{
+		UtilityFunctions::print("collide");
+	}
 }
 
 void Bullet::_ready()
 {
 	auto machineGun = cast_to<MachineGun>(get_parent());
-
-	switch (machineGun->getDirection())
-	{
-	case MachineGun::LEFT: {
-		m_direction = -1;
-		break;
-	}
-	case MachineGun::UP:
-	{
-		m_direction = 0; // todo
-		break;
-
-	}
-	case MachineGun::DOWN:
-	{
-		m_direction = 0; // todo
-		break;
-	}
-
-	case MachineGun::RIGHT:
-	{
-		m_direction = 1;
-		break;
-	}
-	}
+	auto angle_radians = static_cast<float>(Math::deg_to_rad(machineGun->getAngle()));
+	m_direction = Vector2(cos(angle_radians), sin(angle_radians));
 }
 
 void Bullet::_bind_methods()

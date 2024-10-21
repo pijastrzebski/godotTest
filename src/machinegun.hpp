@@ -9,26 +9,18 @@ class MachineGun : public CharacterBody2D
 	GDCLASS(MachineGun, CharacterBody2D)
 
 public:
-	enum EDirection
-	{
-		UP = 0,
-		DOWN,
-		LEFT,
-		RIGHT
-	};
-
 	MachineGun();
 
 	void _physics_process(double delta) override;
 	void _ready() override;
 
-	EDirection getDirection() const { return m_direction; }
+	double getAngle() const { return m_angle; }
 protected:
 	static void _bind_methods();
 
-	void getInput();
+	void getInput(double delta);
 
 private:
 	bool m_shootReady = true;
-	EDirection m_direction = EDirection::RIGHT;
+	double m_angle = 0;
 };

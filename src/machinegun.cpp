@@ -9,7 +9,9 @@
 #include "godot_cpp/classes/resource_loader.hpp"
 #include "godot_cpp/variant/utility_functions.hpp"
 
-void MachineGun::getInput()
+constexpr auto ROTATE_SPEED = 50;
+
+void MachineGun::getInput(double delta)
 {
 	auto right = Input::get_singleton()->is_key_pressed(KEY_RIGHT);
 	auto left = Input::get_singleton()->is_key_pressed(KEY_LEFT);
@@ -20,49 +22,44 @@ void MachineGun::getInput()
 	if (up)
 	{
 		UtilityFunctions::print("MachineGun::getInput up");
-		m_direction = UP;
 	}
 	if (right)
 	{
 		UtilityFunctions::print("MachineGun::getInput right");
-		m_direction = RIGHT;
+		auto angle = ROTATE_SPEED * delta;
 		auto sprite = get_node<AnimatedSprite2D>("Sprite");
-		sprite->set_flip_h(false);
+		sprite->rotate(Math::deg_to_rad(static_cast<float>(angle)));
+		m_angle = sprite->get_rotation_degrees();
 	}
 	if (left)
 	{
 		UtilityFunctions::print("MachineGun::getInput left");
-		m_direction = LEFT;
+		auto angle = -1.0 * ROTATE_SPEED * delta;
 		auto sprite = get_node<AnimatedSprite2D>("Sprite");
-		sprite->set_flip_h(true);
+		sprite->rotate(Math::deg_to_rad(static_cast<float>(angle)));
+		m_angle = sprite->get_rotation_degrees();
 	}
 	if (down)
 	{
 		UtilityFunctions::print("MachineGun::getInput down");
-		m_direction = DOWN;
 	}
+
 	if (shoot & m_shootReady)
 	{
 		UtilityFunctions::print("MachineGun::getInput shot");
 		// create bullet
 		Ref<PackedScene> ref = ResourceLoader::get_singleton()->load("res://scenes/bullet.tscn");
+		// rotate / set pos
 		auto bullet = cast_to<Bullet>(ref->instantiate());
-		auto startPos = get_node<Marker2D>("StartPos");
-		if (m_direction == RIGHT)
-		{
-			bullet->rotate(Math::deg_to_rad(90.f));
-			bullet->set_position(startPos->get_position());
-		} else if (m_direction == LEFT)
-		{
-			bullet->rotate(Math::deg_to_rad(270.f));
-			bullet->set_position(-1.0 * startPos->get_position());
-		}
+		auto startPos = get_node<Marker2D>("Sprite/StartPos");
+		//Vector2 direction = Vector2(cos(Math::deg_to_rad(m_angle)), sin(Math::deg_to_rad(m_angle)));
+		//bullet->set_position(direction); // todo: improve start position of the bullet
+		bullet->set_position(startPos->get_position());
+		bullet->rotate(Math::deg_to_rad(m_angle + 90.f));
+		// add the node
 		add_child(bullet);
-		m_shootReady = false;
 
-		// todo make bullets follow weapon angle
-		// todo add aim line?
-		// todo add crosshair object which sends pos
+		m_shootReady = false;
 	}
 
 	if (!m_shootReady)
@@ -80,7 +77,7 @@ MachineGun::MachineGun()
 
 void MachineGun::_physics_process(double delta)
 {
-	getInput();
+	getInput(delta);
 }
 
 void MachineGun::_ready()
