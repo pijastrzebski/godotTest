@@ -11,22 +11,34 @@
 
 constexpr auto ZOOM_SPEED = 1;
 constexpr auto OFFSET_SPEED = 500;
+constexpr auto DEFAULT_CAMERA_OFFSET_X = 0;
+constexpr auto DEFAULT_CAMERA_OFFSET_Y = 150;
+constexpr auto DEFAULT_CAMERA_ZOOM_X = 2;
+constexpr auto DEFAULT_CAMERA_ZOOM_Y = 2;
+
+Game::Game() :
+	m_keyPressed(false),
+	m_cameraZoom(Vector2(DEFAULT_CAMERA_ZOOM_X, DEFAULT_CAMERA_ZOOM_Y)),
+	m_cameraOffset(Vector2(DEFAULT_CAMERA_OFFSET_X, DEFAULT_CAMERA_OFFSET_Y))
+{
+}
 
 void Game::_process(double delta)
 {
-	getInput(delta);
+	getInput(static_cast<float>(delta));
 }
 
 void Game::_ready()
 {
 	restoreOpacity();
+	restoreCamera();
 }
 
 void Game::_bind_methods()
 {
 }
 
-void Game::getInput(double delta)
+void Game::getInput(float delta)
 {
 	// check key
 	auto f10 = Input::get_singleton()->is_key_pressed(KEY_F10);
@@ -55,47 +67,47 @@ void Game::getInput(double delta)
 	// handle each key
 	if (q)
 	{
-		UtilityFunctions::print("camera zoom in");
 		m_cameraZoom.x += delta * ZOOM_SPEED;
 		m_cameraZoom.y += delta * ZOOM_SPEED;
 		auto camera = get_node<Camera2D>("Camera2D");
 		camera->set_zoom(m_cameraZoom);
+		UtilityFunctions::print("camera zoom in = ", m_cameraZoom);
 	}
 	if (e)
 	{
-		UtilityFunctions::print("camera zoom out");
 		m_cameraZoom.x -= delta * ZOOM_SPEED;
 		m_cameraZoom.y -= delta * ZOOM_SPEED;
 		auto camera = get_node<Camera2D>("Camera2D");
 		camera->set_zoom(m_cameraZoom);
+		UtilityFunctions::print("camera zoom out = ", m_cameraZoom);
 	}
 	if (w)
 	{
-		UtilityFunctions::print("camera change offset up");
 		m_cameraOffset.y -= delta * OFFSET_SPEED;
 		auto camera = get_node<Camera2D>("Camera2D");
 		camera->set_offset(m_cameraOffset);
+		UtilityFunctions::print("camera change offset up = ", m_cameraOffset);
 	}
 	if (s)
 	{
-		UtilityFunctions::print("camera change offset down");
 		m_cameraOffset.y += delta * OFFSET_SPEED;
 		auto camera = get_node<Camera2D>("Camera2D");
 		camera->set_offset(m_cameraOffset);
+		UtilityFunctions::print("camera change offset down = ", m_cameraOffset);
 	}
 	if (a)
 	{
-		UtilityFunctions::print("camera change offset left");
 		m_cameraOffset.x -= delta * OFFSET_SPEED;
 		auto camera = get_node<Camera2D>("Camera2D");
 		camera->set_offset(m_cameraOffset);
+		UtilityFunctions::print("camera change offset left = ", m_cameraOffset);
 	}
 	if (d)
 	{
-		UtilityFunctions::print("camera change offset right");
 		m_cameraOffset.x += delta * OFFSET_SPEED;
 		auto camera = get_node<Camera2D>("Camera2D");
 		camera->set_offset(m_cameraOffset);
+		UtilityFunctions::print("camera change offset right = ", m_cameraOffset);
 	}
 	if (f10)
 	{
@@ -139,4 +151,11 @@ void Game::restoreOpacity()
 	{
 		canvas->set_modulate(Color(1, 1, 1, 1));
 	}
+}
+
+void Game::restoreCamera()
+{
+	auto camera = get_node<Camera2D>("Camera2D");
+	camera->set_offset(Vector2(DEFAULT_CAMERA_OFFSET_X, DEFAULT_CAMERA_OFFSET_Y));
+	camera->set_zoom(Vector2(DEFAULT_CAMERA_ZOOM_X, DEFAULT_CAMERA_ZOOM_Y));
 }

@@ -1,7 +1,7 @@
-[gd_scene load_steps=13 format=3 uid="uid://cltroal7vnn43"]
+[gd_scene load_steps=9 format=3 uid="uid://cltroal7vnn43"]
 
 [ext_resource type="Texture2D" uid="uid://bfqbvj3auqbm" path="res://assets/sprites/bunker/bunker_base_glowing_sprite_sheet.png" id="1_nm2y6"]
-[ext_resource type="Texture2D" uid="uid://cweynryswn5pp" path="res://assets/sprites/machine-gun/machine-gun-sprite.png" id="2_sn2aq"]
+[ext_resource type="PackedScene" uid="uid://8hcaxiauxith" path="res://scenes/machine-gun.tscn" id="2_pmpcg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ftmmb"]
 atlas = ExtResource("1_nm2y6")
@@ -42,35 +42,6 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ufyu3"]
 size = Vector2(53.1481, 13.2459)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_8pk4j"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_vd2vx"]
-atlas = ExtResource("2_sn2aq")
-region = Rect2(240, 142, 240, 142)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_r3n0q"]
-atlas = ExtResource("2_sn2aq")
-region = Rect2(240, 0, 240, 142)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_ub0ec"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_vd2vx")
-}],
-"loop": true,
-"name": &"attack",
-"speed": 9.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_r3n0q")
-}],
-"loop": true,
-"name": &"idle",
-"speed": 6.0
-}]
-
 [node name="Bunker" type="Bunker"]
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -88,20 +59,5 @@ rotation = -3.14159
 scale = Vector2(0.547145, -0.843543)
 shape = SubResource("RectangleShape2D_ufyu3")
 
-[node name="MachineGun" type="MachineGun" parent="."]
-position = Vector2(1, -49)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MachineGun"]
-position = Vector2(-5.52, 2)
-shape = SubResource("CircleShape2D_8pk4j")
-
-[node name="Sprite" type="AnimatedSprite2D" parent="MachineGun"]
-position = Vector2(-0.52, 1)
-scale = Vector2(0.154, 0.2)
-sprite_frames = SubResource("SpriteFrames_ub0ec")
-animation = &"idle"
-autoplay = "idle"
-frame_progress = 0.0258081
-
-[node name="StartPos" type="Marker2D" parent="MachineGun/Sprite"]
-position = Vector2(20, 0)
+[node name="MachineGun" parent="." instance=ExtResource("2_pmpcg")]
+position = Vector2(-3, -46)

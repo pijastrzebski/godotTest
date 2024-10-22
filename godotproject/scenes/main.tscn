@@ -5,8 +5,6 @@
 [node name="Main" type="Main"]
 position = Vector2(0, 1)
 
-[node name="Camera2D" type="Camera2D" parent="."]
-
 [node name="Menu" parent="." instance=ExtResource("1_5o8qb")]
 offset_left = -16.0
 offset_top = -9.0

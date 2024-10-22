@@ -11,7 +11,7 @@
 
 constexpr auto ROTATE_SPEED = 50;
 
-void MachineGun::getInput(double delta)
+void MachineGun::getInput(float delta)
 {
 	auto right = Input::get_singleton()->is_key_pressed(KEY_RIGHT);
 	auto left = Input::get_singleton()->is_key_pressed(KEY_LEFT);
@@ -27,16 +27,16 @@ void MachineGun::getInput(double delta)
 	{
 		UtilityFunctions::print("MachineGun::getInput right");
 		auto angle = ROTATE_SPEED * delta;
-		auto sprite = get_node<AnimatedSprite2D>("Sprite");
-		sprite->rotate(Math::deg_to_rad(static_cast<float>(angle)));
+		auto sprite = get_node<AnimatedSprite2D>("Sprite/Head");
+		sprite->rotate(Math::deg_to_rad(angle));
 		m_angle = sprite->get_rotation_degrees();
 	}
 	if (left)
 	{
 		UtilityFunctions::print("MachineGun::getInput left");
-		auto angle = -1.0 * ROTATE_SPEED * delta;
-		auto sprite = get_node<AnimatedSprite2D>("Sprite");
-		sprite->rotate(Math::deg_to_rad(static_cast<float>(angle)));
+		auto angle = -1.f * ROTATE_SPEED * delta;
+		auto sprite = get_node<AnimatedSprite2D>("Sprite/Head");
+		sprite->rotate(Math::deg_to_rad(angle));
 		m_angle = sprite->get_rotation_degrees();
 	}
 	if (down)
@@ -55,7 +55,7 @@ void MachineGun::getInput(double delta)
 		//Vector2 direction = Vector2(cos(Math::deg_to_rad(m_angle)), sin(Math::deg_to_rad(m_angle)));
 		//bullet->set_position(direction); // todo: improve start position of the bullet
 		bullet->set_position(startPos->get_position());
-		bullet->rotate(static_cast<float>(Math::deg_to_rad(m_angle + 90.f)));
+		bullet->rotate(Math::deg_to_rad(m_angle + 90.f));
 		// add the node
 		add_child(bullet);
 
@@ -77,7 +77,7 @@ MachineGun::MachineGun()
 
 void MachineGun::_physics_process(double delta)
 {
-	getInput(delta);
+	getInput(static_cast<float>(delta));
 }
 
 void MachineGun::_ready()

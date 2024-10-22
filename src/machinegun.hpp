@@ -18,9 +18,9 @@ public:
 protected:
 	static void _bind_methods();
 
-	void getInput(double delta);
+	void getInput(float delta);
 
 private:
 	bool m_shootReady = true;
-	double m_angle = 0;
+	float m_angle = 0;
 };

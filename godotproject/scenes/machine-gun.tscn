@@ -1,0 +1,59 @@
+[gd_scene load_steps=7 format=3 uid="uid://8hcaxiauxith"]
+
+[ext_resource type="Texture2D" uid="uid://3kh6ph05i4sk" path="res://assets/sprites/machine-gun/machine-gun-turret.png" id="1_6mltd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fn86u"]
+atlas = ExtResource("1_6mltd")
+region = Rect2(0, 0, 156, 108)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ub0ec"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fn86u")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 6.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_36u50"]
+atlas = ExtResource("1_6mltd")
+region = Rect2(0, 108, 156, 108)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_j2ljr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_36u50")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8pk4j"]
+
+[node name="MachineGun" type="MachineGun"]
+position = Vector2(1, -49)
+
+[node name="Sprite" type="Node2D" parent="."]
+position = Vector2(-0.52, 1)
+scale = Vector2(0.154, 0.2)
+
+[node name="Head" type="AnimatedSprite2D" parent="Sprite"]
+z_index = 1
+sprite_frames = SubResource("SpriteFrames_ub0ec")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="StartPos" type="Marker2D" parent="Sprite"]
+position = Vector2(20, 0)
+
+[node name="Leg" type="AnimatedSprite2D" parent="Sprite"]
+sprite_frames = SubResource("SpriteFrames_j2ljr")
+animation = &"idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-5.52, 2)
+shape = SubResource("CircleShape2D_8pk4j")

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cweynryswn5pp"
-path="res://.godot/imported/machine-gun-sprite.png-216d1aa38dd48e2eb4b954447612d2a5.ctex"
+uid="uid://3kh6ph05i4sk"
+path="res://.godot/imported/machine-gun-turret.png-2a85877660cb1290911f26e67e858356.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/machine-gun/machine-gun-sprite.png"
-dest_files=["res://.godot/imported/machine-gun-sprite.png-216d1aa38dd48e2eb4b954447612d2a5.ctex"]
+source_file="res://assets/sprites/machine-gun/machine-gun-turret.png"
+dest_files=["res://.godot/imported/machine-gun-turret.png-2a85877660cb1290911f26e67e858356.ctex"]
 
 [params]
 

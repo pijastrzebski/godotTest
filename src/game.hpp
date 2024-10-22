@@ -9,18 +9,21 @@ class Game : public Node2D
 	GDCLASS(Game, Node2D)
 
 public:
+	Game();
+
 	void _process(double delta) override;
 	void _ready() override;
 
 protected:
 	static void _bind_methods();
 
-	void getInput(double delta);
+	void getInput(float delta);
 
 private:
 	void restoreOpacity();
+	void restoreCamera();
 
-	bool m_keyPressed = false;
-	Vector2 m_cameraZoom = Vector2(1, 1);
-	Vector2 m_cameraOffset = Vector2(0, 0);
+	bool m_keyPressed;
+	Vector2 m_cameraZoom;
+	Vector2 m_cameraOffset;
 };
