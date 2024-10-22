@@ -6,6 +6,7 @@
 #include "godot_cpp/classes/input.hpp"
 #include "godot_cpp/classes/resource_loader.hpp"
 #include "godot_cpp/classes/packed_scene.hpp"
+#include "godot_cpp/classes/path_follow2d.hpp"
 #include "godot_cpp/classes/scene_tree.hpp"
 #include "godot_cpp/variant/utility_functions.hpp"
 

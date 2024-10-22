@@ -2,6 +2,7 @@
 
 #include "bullet.hpp"
 #include "bunker.hpp"
+#include "enemybuilder.hpp"
 #include "godotcustomanimatedsprite.hpp"
 #include "godotcustombutton.hpp"
 #include "godotcustomcharacterbody.hpp"
@@ -59,6 +60,7 @@ void GodotRegisterTypes::initializeTestLibModule(ModuleInitializationLevel level
 	GDREGISTER_CLASS(Bunker)
 	GDREGISTER_CLASS(MachineGun)
 	GDREGISTER_CLASS(Bullet)
+	GDREGISTER_CLASS(EnemyBuilder)
 
 }
 

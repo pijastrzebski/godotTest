@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dm5bwkdajb4ur"
-path="res://.godot/imported/alien-t-pose.png-9567b0ea158b98ac2f48b31b649d6bf7.ctex"
+uid="uid://bdxsiwsl6v5wh"
+path="res://.godot/imported/monster.png-687e6407b6c40b0f1c2a9551aaac88d0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/alien/alien-t-pose.png"
-dest_files=["res://.godot/imported/alien-t-pose.png-9567b0ea158b98ac2f48b31b649d6bf7.ctex"]
+source_file="res://assets/sprites/enemy/monster.png"
+dest_files=["res://.godot/imported/monster.png-687e6407b6c40b0f1c2a9551aaac88d0.ctex"]
 
 [params]
 
