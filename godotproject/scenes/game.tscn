@@ -4,11 +4,13 @@
 [ext_resource type="Texture2D" uid="uid://cbh0yjd13odaj" path="res://assets/background/landscape_outer_planet-2.png" id="1_svctp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iwayd"]
-size = Vector2(1180, 20)
+size = Vector2(1234, 20)
 
 [node name="Game" type="Game"]
 
 [node name="Camera2D" type="Camera2D" parent="."]
+limit_smoothed = true
+position_smoothing_enabled = true
 
 [node name="Landscape" type="Sprite2D" parent="."]
 position = Vector2(26, -311)
@@ -22,5 +24,5 @@ position = Vector2(3, 191)
 position = Vector2(-50, 122)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platform"]
-position = Vector2(49, 195)
+position = Vector2(78, 161)
 shape = SubResource("RectangleShape2D_iwayd")

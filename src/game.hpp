@@ -15,10 +15,12 @@ public:
 protected:
 	static void _bind_methods();
 
-	void getInput();
+	void getInput(double delta);
 
 private:
 	void restoreOpacity();
 
 	bool m_keyPressed = false;
+	Vector2 m_cameraZoom = Vector2(1, 1);
+	Vector2 m_cameraOffset = Vector2(0, 0);
 };

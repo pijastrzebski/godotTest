@@ -2,15 +2,19 @@
 
 #include "menu.hpp"
 #include "godot_cpp/classes/animated_sprite2d.hpp"
+#include "godot_cpp/classes/camera2d.hpp"
 #include "godot_cpp/classes/input.hpp"
 #include "godot_cpp/classes/resource_loader.hpp"
 #include "godot_cpp/classes/packed_scene.hpp"
 #include "godot_cpp/classes/scene_tree.hpp"
 #include "godot_cpp/variant/utility_functions.hpp"
 
+constexpr auto ZOOM_SPEED = 1;
+constexpr auto OFFSET_SPEED = 500;
+
 void Game::_process(double delta)
 {
-	getInput();
+	getInput(delta);
 }
 
 void Game::_ready()
@@ -22,10 +26,16 @@ void Game::_bind_methods()
 {
 }
 
-void Game::getInput()
+void Game::getInput(double delta)
 {
 	// check key
 	auto f10 = Input::get_singleton()->is_key_pressed(KEY_F10);
+	auto q = Input::get_singleton()->is_key_pressed(KEY_Q);
+	auto e = Input::get_singleton()->is_key_pressed(KEY_E);
+	auto w = Input::get_singleton()->is_key_pressed(KEY_W);
+	auto s = Input::get_singleton()->is_key_pressed(KEY_S);
+	auto a = Input::get_singleton()->is_key_pressed(KEY_A);
+	auto d = Input::get_singleton()->is_key_pressed(KEY_D);
 
 	// handle key pressed -> if previously pressed
 	if (m_keyPressed)
@@ -43,6 +53,50 @@ void Game::getInput()
 	}
 
 	// handle each key
+	if (q)
+	{
+		UtilityFunctions::print("camera zoom in");
+		m_cameraZoom.x += delta * ZOOM_SPEED;
+		m_cameraZoom.y += delta * ZOOM_SPEED;
+		auto camera = get_node<Camera2D>("Camera2D");
+		camera->set_zoom(m_cameraZoom);
+	}
+	if (e)
+	{
+		UtilityFunctions::print("camera zoom out");
+		m_cameraZoom.x -= delta * ZOOM_SPEED;
+		m_cameraZoom.y -= delta * ZOOM_SPEED;
+		auto camera = get_node<Camera2D>("Camera2D");
+		camera->set_zoom(m_cameraZoom);
+	}
+	if (w)
+	{
+		UtilityFunctions::print("camera change offset up");
+		m_cameraOffset.y -= delta * OFFSET_SPEED;
+		auto camera = get_node<Camera2D>("Camera2D");
+		camera->set_offset(m_cameraOffset);
+	}
+	if (s)
+	{
+		UtilityFunctions::print("camera change offset down");
+		m_cameraOffset.y += delta * OFFSET_SPEED;
+		auto camera = get_node<Camera2D>("Camera2D");
+		camera->set_offset(m_cameraOffset);
+	}
+	if (a)
+	{
+		UtilityFunctions::print("camera change offset left");
+		m_cameraOffset.x -= delta * OFFSET_SPEED;
+		auto camera = get_node<Camera2D>("Camera2D");
+		camera->set_offset(m_cameraOffset);
+	}
+	if (d)
+	{
+		UtilityFunctions::print("camera change offset right");
+		m_cameraOffset.x += delta * OFFSET_SPEED;
+		auto camera = get_node<Camera2D>("Camera2D");
+		camera->set_offset(m_cameraOffset);
+	}
 	if (f10)
 	{
 		auto menu = get_node_or_null("/root/Main/Menu");
