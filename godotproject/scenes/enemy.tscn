@@ -2,14 +2,6 @@
 
 [ext_resource type="Texture2D" uid="uid://bdxsiwsl6v5wh" path="res://assets/sprites/enemy/monster.png" id="1_1yfuu"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_4f5v0"]
-atlas = ExtResource("1_1yfuu")
-region = Rect2(100, 354, 100, 146)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_86s02"]
-atlas = ExtResource("1_1yfuu")
-region = Rect2(0, 354, 100, 146)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_wjhrs"]
 atlas = ExtResource("1_1yfuu")
 region = Rect2(200, 349, 100, 151)
@@ -22,19 +14,16 @@ region = Rect2(300, 349, 100, 151)
 atlas = ExtResource("1_1yfuu")
 region = Rect2(400, 349, 100, 151)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_4f5v0"]
+atlas = ExtResource("1_1yfuu")
+region = Rect2(100, 354, 100, 146)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_86s02"]
+atlas = ExtResource("1_1yfuu")
+region = Rect2(0, 354, 100, 146)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_vsa5w"]
 animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4f5v0")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_86s02")
-}],
-"loop": true,
-"name": &"idle",
-"speed": 5.0
-}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_wjhrs")
@@ -46,35 +35,48 @@ animations = [{
 "texture": SubResource("AtlasTexture_bn2ku")
 }],
 "loop": true,
-"name": &"walk",
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4f5v0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_86s02")
+}],
+"loop": true,
+"name": &"idle",
 "speed": 5.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sdl2i"]
-radius = 16.0
-height = 64.0
+radius = 32.0
+height = 80.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7wxl6"]
-radius = 16.0
-height = 64.0
+radius = 32.0
+height = 80.0
 
-[node name="Enemy" type="RigidBody2D"]
+[node name="Enemy" type="Enemy"]
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -30)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_vsa5w")
-animation = &"walk"
+animation = &"attack"
 autoplay = "idle"
 
 [node name="DetectionArea" type="Area2D" parent="."]
-collision_layer = 2
+collision_layer = 3
+collision_mask = 2
 
-[node name="DetectionShape" type="CollisionShape2D" parent="DetectionArea"]
+[node name="CollisionShape" type="CollisionShape2D" parent="DetectionArea"]
 position = Vector2(0, -24)
 shape = SubResource("CapsuleShape2D_sdl2i")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -24)
 shape = SubResource("CapsuleShape2D_7wxl6")
+disabled = true
 debug_color = Color(0.650637, 0.438271, 0.7324, 0.42)

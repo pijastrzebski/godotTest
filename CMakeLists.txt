@@ -36,6 +36,7 @@ set(SRC_FILES
   src/machinegun.cpp
   src/bullet.cpp
   src/enemybuilder.cpp
+  src/enemy.cpp
 )
 
 # Add header files
@@ -62,6 +63,7 @@ set(HEADER_FILES
   src/machinegun.hpp
   src/bullet.hpp
   src/enemybuilder.hpp
+  src/enemy.hpp
 )
 
 # Add executable target
@@ -85,3 +87,6 @@ set_target_properties(godotTestLib PROPERTIES
 
 # Link libraries
 target_link_libraries(godotTestLib godot-cpp)
+
+# Add precompiled header
+target_precompile_headers(godotTestLib PRIVATE src/pch.hpp)

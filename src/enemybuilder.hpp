@@ -18,7 +18,7 @@ protected:
 	void onTimeout();
 
 private:
-	float m_pathProgress = 0;
-
 	PathFollow2D* m_pathFollowLeft = nullptr;
+
+	float m_pathProgress = 0;
 };

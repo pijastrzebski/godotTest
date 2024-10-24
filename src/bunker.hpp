@@ -1,6 +1,7 @@
 #pragma once
 
 #include "godot_cpp/classes/animatable_body2d.hpp"
+#include "godot_cpp/classes/area2d.hpp"
 
 using namespace godot;
 
@@ -18,4 +19,6 @@ protected:
 
 	void getInput();
 private:
+	void onCollision(Area2D* area);
+	void onMouseEntered();
 };

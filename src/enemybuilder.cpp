@@ -1,10 +1,11 @@
 #include "enemybuilder.hpp"
 
+#include "enemy.hpp"
 #include "godot_cpp/classes/animated_sprite2d.hpp"
 #include "godot_cpp/classes/packed_scene.hpp"
+#include "godot_cpp/classes/path2d.hpp"
 #include "godot_cpp/classes/path_follow2d.hpp"
 #include "godot_cpp/classes/resource_loader.hpp"
-#include "godot_cpp/classes/rigid_body2d.hpp"
 #include "godot_cpp/classes/timer.hpp"
 #include "godot_cpp/variant/utility_functions.hpp"
 
@@ -27,6 +28,7 @@ void EnemyBuilder::_ready()
 	{
 		timer->connect("timeout", Callable(this, "onTimeout"));
 		timer->start(TIMER_INTERVAL_SEC);
+		timer->set_one_shot(false);
 	}
 
 	m_pathFollowLeft = get_node<PathFollow2D>("EnemyPaths/EnemyPathLeft/PathFollow");
@@ -39,23 +41,24 @@ void EnemyBuilder::_bind_methods()
 
 void EnemyBuilder::onTimeout()
 {
-	UtilityFunctions::print("onTimeout 1 sec...");
+	UtilityFunctions::print("onTimeout ", TIMER_INTERVAL_SEC, " sec...");
 
-	// spawn enemy
 	UtilityFunctions::print("spawn enemy");
 	Ref<PackedScene> enemy = ResourceLoader::get_singleton()->load("res://scenes/enemy.tscn");
 	if (enemy->can_instantiate())
 	{
-		if (auto pathFollow = get_node<PathFollow2D>("EnemyPaths/EnemyPathLeft/PathFollow"); pathFollow)
+		auto enemyNode = enemy->instantiate();
+		// set animation
+		if (auto sprite = enemyNode->get_node<AnimatedSprite2D>("Sprite"); sprite)
 		{
-			auto enemyNode = enemy->instantiate();
-			auto sprite = enemyNode->get_node<AnimatedSprite2D>("Sprite");
-			if (sprite)
-			{
-				sprite->set_animation("idle");
-				sprite->set_flip_h(true);
-			}
-			pathFollow->add_child(enemyNode);
+			sprite->play("idle");
+			sprite->set_flip_h(true);
 		}
+
+		// make enemy follow the path
+		//cast_to<Enemy>(enemyNode)->setPath(pathNode);
+		//auto pathFollowLeft = get_node<PathFollow2D>("EnemyPaths/EnemyPathLeft/PathFollow");
+		m_pathFollowLeft->add_child(enemyNode);
+		m_pathProgress = 0;
 	}
 }

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cltroal7vnn43"]
+[gd_scene load_steps=10 format=3 uid="uid://cltroal7vnn43"]
 
 [ext_resource type="Texture2D" uid="uid://bfqbvj3auqbm" path="res://assets/sprites/bunker/bunker_base_glowing_sprite_sheet.png" id="1_nm2y6"]
 [ext_resource type="PackedScene" uid="uid://8hcaxiauxith" path="res://scenes/machine-gun.tscn" id="2_pmpcg"]
@@ -39,8 +39,13 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ufyu3"]
-size = Vector2(53.1481, 13.2459)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_y26ep"]
+radius = 58.481
+height = 125.68
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gyt7k"]
+radius = 29.0
+height = 108.0
 
 [node name="Bunker" type="Bunker"]
 
@@ -54,10 +59,19 @@ autoplay = "default"
 frame_progress = 0.0206827
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-5, 3)
-rotation = -3.14159
+position = Vector2(-5, 5)
+rotation = -1.55858
 scale = Vector2(0.547145, -0.843543)
-shape = SubResource("RectangleShape2D_ufyu3")
+shape = SubResource("CapsuleShape2D_y26ep")
+disabled = true
 
 [node name="MachineGun" parent="." instance=ExtResource("2_pmpcg")]
 position = Vector2(-3, -46)
+
+[node name="DetectionArea" type="Area2D" parent="."]
+
+[node name="CollisionShape" type="CollisionShape2D" parent="DetectionArea"]
+position = Vector2(-6, 5)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_gyt7k")
+debug_color = Color(0.650208, 0.379617, 0.900367, 0.42)

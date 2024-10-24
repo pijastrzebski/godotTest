@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=3 uid="uid://2um552gwy7bm"]
+
+[sub_resource type="Curve2D" id="Curve2D_ml8vy"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -592, 216, 0, 0, 0, 0, -56, 216)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_8py6i"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 640, 208, 0, 0, 0, 0, 48, 208)
+}
+point_count = 2
+
+[node name="EnemyPaths2" type="Node"]
+
+[node name="EnemyPathLeft" type="Path2D" parent="."]
+curve = SubResource("Curve2D_ml8vy")
+
+[node name="PathFollow" type="PathFollow2D" parent="EnemyPathLeft"]
+position = Vector2(-56, 216)
+progress = 536.0
+loop = false
+
+[node name="EnemyPathRight" type="Path2D" parent="."]
+curve = SubResource("Curve2D_8py6i")
+
+[node name="PathFollow" type="PathFollow2D" parent="EnemyPathRight"]
+position = Vector2(150.919, 208)
+rotation = 3.14159
+progress = 489.08
+loop = false

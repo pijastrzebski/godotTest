@@ -1,22 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://ckr3560tjhkbj"]
+[gd_scene load_steps=5 format=3 uid="uid://ckr3560tjhkbj"]
 
 [ext_resource type="PackedScene" uid="uid://cltroal7vnn43" path="res://scenes/bunker.tscn" id="1_6lx22"]
 [ext_resource type="Texture2D" uid="uid://cbh0yjd13odaj" path="res://assets/background/landscape_outer_planet-2.png" id="1_svctp"]
+[ext_resource type="PackedScene" uid="uid://2um552gwy7bm" path="res://scenes/enemy-paths.tscn" id="3_a8lf7"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_af80g"]
 distance = -228.23
-
-[sub_resource type="Curve2D" id="Curve2D_ml8vy"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, -592, 216, 0, 0, 0, 0, -56, 216)
-}
-point_count = 2
-
-[sub_resource type="Curve2D" id="Curve2D_8py6i"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 640, 208, 0, 0, 0, 0, 48, 208)
-}
-point_count = 2
 
 [node name="Game" type="Game"]
 
@@ -44,22 +33,7 @@ shape = SubResource("WorldBoundaryShape2D_af80g")
 
 [node name="EnemyBuilder" type="EnemyBuilder" parent="."]
 
-[node name="EnemyPaths" type="Node" parent="EnemyBuilder"]
-
-[node name="EnemyPathLeft" type="Path2D" parent="EnemyBuilder/EnemyPaths"]
-curve = SubResource("Curve2D_ml8vy")
-
-[node name="PathFollow" type="PathFollow2D" parent="EnemyBuilder/EnemyPaths/EnemyPathLeft"]
-position = Vector2(-540.071, 216)
-progress = 51.9426
-
-[node name="EnemyPathRight" type="Path2D" parent="EnemyBuilder/EnemyPaths"]
-curve = SubResource("Curve2D_8py6i")
-
-[node name="PathFollow" type="PathFollow2D" parent="EnemyBuilder/EnemyPaths/EnemyPathRight"]
-position = Vector2(150.919, 208)
-rotation = 3.14159
-progress = 489.08
+[node name="EnemyPaths" parent="EnemyBuilder" instance=ExtResource("3_a8lf7")]
 
 [node name="SpawnTimer" type="Timer" parent="EnemyBuilder"]
 wait_time = 5.0
