@@ -1,16 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://ckr3560tjhkbj"]
+[gd_scene load_steps=3 format=3 uid="uid://ckr3560tjhkbj"]
 
 [ext_resource type="PackedScene" uid="uid://cltroal7vnn43" path="res://scenes/bunker.tscn" id="1_6lx22"]
 [ext_resource type="Texture2D" uid="uid://cbh0yjd13odaj" path="res://assets/background/landscape_outer_planet-2.png" id="1_svctp"]
-[ext_resource type="PackedScene" uid="uid://2um552gwy7bm" path="res://scenes/enemy-paths.tscn" id="3_a8lf7"]
-
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_af80g"]
-distance = -228.23
 
 [node name="Game" type="Game"]
+position = Vector2(-94, 0)
 
 [node name="Camera2D" type="Camera2D" parent="."]
-offset = Vector2(0, 150)
+offset = Vector2(0, 157.138)
 zoom = Vector2(2, 2)
 limit_bottom = 150
 limit_smoothed = true
@@ -27,13 +24,12 @@ texture = ExtResource("1_svctp")
 [node name="Bunker" parent="." instance=ExtResource("1_6lx22")]
 position = Vector2(3, 191)
 
-[node name="Ground" type="CollisionShape2D" parent="Bunker"]
+[node name="Ground" type="CollisionPolygon2D" parent="Bunker"]
 position = Vector2(-3, -191)
-shape = SubResource("WorldBoundaryShape2D_af80g")
+polygon = PackedVector2Array(-584, 224, -456, 248, -336, 200, -256, 216, -168, 208, -112, 200, -64, 216, -56, 232, 64, 232, 72, 216, 168, 200, 248, 200, 368, 104, 464, 56, 512, 40, 584, 64, 576, 280, 16, 288, -544, 296, -584, 288, -592, 216)
 
 [node name="EnemyBuilder" type="EnemyBuilder" parent="."]
 
-[node name="EnemyPaths" parent="EnemyBuilder" instance=ExtResource("3_a8lf7")]
-
 [node name="SpawnTimer" type="Timer" parent="EnemyBuilder"]
 wait_time = 5.0
+one_shot = true

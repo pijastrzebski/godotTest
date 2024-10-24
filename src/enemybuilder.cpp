@@ -11,14 +11,10 @@
 
 constexpr auto TIMER_INTERVAL_SEC = 5;
 constexpr auto PATH_PROGRESS_SPEED = 100;
+constexpr auto TIMER_ONE_SHOT_ENABLED = true;
 
 void EnemyBuilder::_process(double delta)
 {
-	if (m_pathFollowLeft)
-	{
-		m_pathProgress += static_cast<float>(PATH_PROGRESS_SPEED * delta);
-		m_pathFollowLeft->set_progress(m_pathProgress);
-	}
 }
 
 void EnemyBuilder::_ready()
@@ -28,10 +24,8 @@ void EnemyBuilder::_ready()
 	{
 		timer->connect("timeout", Callable(this, "onTimeout"));
 		timer->start(TIMER_INTERVAL_SEC);
-		timer->set_one_shot(false);
+		timer->set_one_shot(TIMER_ONE_SHOT_ENABLED);
 	}
-
-	m_pathFollowLeft = get_node<PathFollow2D>("EnemyPaths/EnemyPathLeft/PathFollow");
 }
 
 void EnemyBuilder::_bind_methods()
@@ -47,7 +41,7 @@ void EnemyBuilder::onTimeout()
 	Ref<PackedScene> enemy = ResourceLoader::get_singleton()->load("res://scenes/enemy.tscn");
 	if (enemy->can_instantiate())
 	{
-		auto enemyNode = enemy->instantiate();
+		auto enemyNode = cast_to<Enemy>(enemy->instantiate());
 		// set animation
 		if (auto sprite = enemyNode->get_node<AnimatedSprite2D>("Sprite"); sprite)
 		{
@@ -55,10 +49,17 @@ void EnemyBuilder::onTimeout()
 			sprite->set_flip_h(true);
 		}
 
-		// make enemy follow the path
-		//cast_to<Enemy>(enemyNode)->setPath(pathNode);
-		//auto pathFollowLeft = get_node<PathFollow2D>("EnemyPaths/EnemyPathLeft/PathFollow");
-		m_pathFollowLeft->add_child(enemyNode);
-		m_pathProgress = 0;
+		// create a path for the enemy
+		Ref<PackedScene> path = ResourceLoader::get_singleton()->load("res://scenes/enemy-paths.tscn");
+		if (path->can_instantiate())
+		{
+			auto pathNode = path->instantiate();
+			get_parent()->add_child(pathNode);
+			enemyNode->setPath(pathNode);
+			if (auto pathFollow = enemyNode->getPathFollow(); pathFollow)
+			{
+				pathFollow->add_child(enemyNode);
+			}
+		}
 	}
 }
