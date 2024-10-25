@@ -18,6 +18,7 @@
 #include "menu.hpp"
 #include "options.hpp"
 #include "optionsbutton.hpp"
+#include "player.hpp"
 #include "startbutton.hpp"
 #include "title.hpp"
 
@@ -58,12 +59,12 @@ void GodotRegisterTypes::initializeTestLibModule(ModuleInitializationLevel level
 	GDREGISTER_CLASS(StartButton)
 	GDREGISTER_CLASS(ExitButton)
 
+	GDREGISTER_CLASS(Player)
 	GDREGISTER_CLASS(Bunker)
 	GDREGISTER_CLASS(MachineGun)
 	GDREGISTER_CLASS(Bullet)
 	GDREGISTER_CLASS(EnemyBuilder)
 	GDREGISTER_CLASS(Enemy)
-
 }
 
 void GodotRegisterTypes::uninitializeTestLibModule(ModuleInitializationLevel level)

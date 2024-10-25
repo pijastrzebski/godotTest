@@ -7,7 +7,7 @@
 
 [node name="HUD" type="CanvasLayer"]
 
-[node name="mainContainer" type="Control" parent="."]
+[node name="main" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
 offset_top = 24.0
@@ -16,7 +16,7 @@ offset_bottom = 623.0
 size_flags_horizontal = 6
 size_flags_vertical = 4
 
-[node name="xpBar" type="HBoxContainer" parent="mainContainer"]
+[node name="xpBar" type="HBoxContainer" parent="main"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -29,13 +29,13 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 alignment = 1
 
-[node name="progress" type="TextureProgressBar" parent="mainContainer/xpBar"]
+[node name="progress" type="TextureProgressBar" parent="main/xpBar"]
 layout_mode = 2
 value = 50.0
 texture_under = ExtResource("3_qahkr")
 texture_progress = ExtResource("4_sgiw7")
 
-[node name="text" type="RichTextLabel" parent="mainContainer/xpBar/progress"]
+[node name="text" type="RichTextLabel" parent="main/xpBar/progress"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -53,7 +53,7 @@ text = "[font_size=30][color=black][b]XP 50/100"
 fit_content = true
 autowrap_mode = 0
 
-[node name="hpBar" type="HBoxContainer" parent="mainContainer"]
+[node name="hpBar" type="HBoxContainer" parent="main"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -69,13 +69,13 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 alignment = 1
 
-[node name="progress" type="TextureProgressBar" parent="mainContainer/hpBar"]
+[node name="progress" type="TextureProgressBar" parent="main/hpBar"]
 layout_mode = 2
 value = 50.0
 texture_under = ExtResource("1_wok64")
 texture_progress = ExtResource("2_t5u2d")
 
-[node name="text" type="RichTextLabel" parent="mainContainer/hpBar/progress"]
+[node name="text" type="RichTextLabel" parent="main/hpBar/progress"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
