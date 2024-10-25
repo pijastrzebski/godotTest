@@ -1,0 +1,96 @@
+[gd_scene load_steps=5 format=3 uid="uid://fp30w70mnchm"]
+
+[ext_resource type="Texture2D" uid="uid://ckimvkq7x0s05" path="res://assets/hud/progress-bar-dark.png" id="1_wok64"]
+[ext_resource type="Texture2D" uid="uid://x5xsa8adoiba" path="res://assets/hud/progress-bar-dark-filled.png" id="2_t5u2d"]
+[ext_resource type="Texture2D" uid="uid://byeorcu2huxc2" path="res://assets/hud/progress-bar-white.png" id="3_qahkr"]
+[ext_resource type="Texture2D" uid="uid://d4bicnevxinvp" path="res://assets/hud/progress-bar-white-filled.png" id="4_sgiw7"]
+
+[node name="HUD" type="CanvasLayer"]
+
+[node name="mainContainer" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_top = 24.0
+offset_right = 1136.0
+offset_bottom = 623.0
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="xpBar" type="HBoxContainer" parent="mainContainer"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -199.0
+offset_right = 199.0
+offset_bottom = 79.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+alignment = 1
+
+[node name="progress" type="TextureProgressBar" parent="mainContainer/xpBar"]
+layout_mode = 2
+value = 50.0
+texture_under = ExtResource("3_qahkr")
+texture_progress = ExtResource("4_sgiw7")
+
+[node name="text" type="RichTextLabel" parent="mainContainer/xpBar/progress"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -73.5
+offset_top = -21.0
+offset_right = 73.5
+offset_bottom = 21.0
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "[font_size=30][color=black][b]XP 50/100"
+fit_content = true
+autowrap_mode = 0
+
+[node name="hpBar" type="HBoxContainer" parent="mainContainer"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -199.0
+offset_top = -76.0
+offset_right = 199.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+alignment = 1
+
+[node name="progress" type="TextureProgressBar" parent="mainContainer/hpBar"]
+layout_mode = 2
+value = 50.0
+texture_under = ExtResource("1_wok64")
+texture_progress = ExtResource("2_t5u2d")
+
+[node name="text" type="RichTextLabel" parent="mainContainer/hpBar/progress"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -75.5
+offset_top = -21.0
+offset_right = 75.5
+offset_bottom = 21.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+bbcode_enabled = true
+text = "[font_size=30][b]HP 50/100"
+fit_content = true
+autowrap_mode = 0
