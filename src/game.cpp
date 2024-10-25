@@ -1,6 +1,7 @@
 #include "game.hpp"
 
 #include "menu.hpp"
+#include "title.hpp"
 #include "godot_cpp/classes/animated_sprite2d.hpp"
 #include "godot_cpp/classes/camera2d.hpp"
 #include "godot_cpp/classes/input.hpp"
@@ -142,6 +143,30 @@ void Game::getInput(float delta)
 			menu->queue_free();
 		}
 		m_keyPressed = true;
+	}
+}
+
+void Game::gameOver()
+{
+	auto menu = get_node_or_null("/root/Main/Menu");
+	if (!menu)
+	{
+		// make this scene transparent
+		auto canvas = cast_to<CanvasItem>(this);
+		if (canvas)
+		{
+			canvas->set_modulate(Color(1, 1, 1, 0.2f));
+		}
+
+		// create menu
+		Ref<PackedScene> ref = ResourceLoader::get_singleton()->load("res://scenes/menu.tscn");
+		if (ref->can_instantiate())
+		{
+			menu = ref->instantiate();
+			get_parent()->add_child(menu);
+			Title* title = cast_to<Menu>(menu)->get_node<Title>("VBoxContainer/title");
+			title->set_text("[font_size=60] [wave amp=25 connected=0] GAME OVER ");
+		}
 	}
 }
 

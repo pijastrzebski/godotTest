@@ -31,6 +31,7 @@ size_flags_vertical = 4
 alignment = 1
 
 [node name="progress" type="TextureProgressBar" parent="main/xpBar"]
+self_modulate = Color(1, 1, 1, 0.588235)
 layout_mode = 2
 value = 50.0
 texture_under = ExtResource("3_qahkr")
@@ -71,6 +72,7 @@ size_flags_vertical = 4
 alignment = 1
 
 [node name="progress" type="TextureProgressBar" parent="main/hpBar"]
+self_modulate = Color(1, 1, 1, 0.588235)
 layout_mode = 2
 value = 50.0
 texture_under = ExtResource("1_wok64")

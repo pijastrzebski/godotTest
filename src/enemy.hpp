@@ -10,6 +10,12 @@ class Enemy : public CharacterBody2D
 {
 	GDCLASS(Enemy, CharacterBody2D)
 
+	struct Stats
+	{
+		double hp = 100;
+		double attack = 5;
+	};
+
 public:
 	explicit Enemy();
 
@@ -18,6 +24,9 @@ public:
 
 	void setPath(Node* path);
 	PathFollow2D* getPathFollow() const;
+
+	double getAttack() const;
+	void move(float progress);
 protected:
 	static void _bind_methods();
 
@@ -28,4 +37,5 @@ private:
 
 	float m_pathProgress = 0;
 
+	Stats m_stats;
 };

@@ -1,5 +1,8 @@
 #include "bunker.hpp"
 
+#include "enemy.hpp"
+#include "player.hpp"
+#include "godot_cpp/classes/animated_sprite2d.hpp"
 #include "godot_cpp/classes/input.hpp"
 #include "godot_cpp/classes/physics_server2d.hpp"
 #include "godot_cpp/variant/utility_functions.hpp"
@@ -56,7 +59,25 @@ void Bunker::getInput()
 
 void Bunker::onCollision(Area2D* area)
 {
-	UtilityFunctions::print("bunker collision detected with: ", area->get_parent()->get_name());
+	if (!area)
+	{
+		return;
+	}
+
+	// collision effects
+	auto parent = area->get_parent();
+	auto areaName = parent->get_name();
+	if (areaName.contains("Enemy")) {
+		UtilityFunctions::print("attacked by enemy");
+		auto player = get_parent()->get_node<Player>("Player");
+		auto enemy = cast_to<Enemy>(parent);
+		auto attack = enemy->getAttack();
+		player->adjustHP(-attack);
+	}
+	else if (areaName.contains("Enemy"))
+	{
+		UtilityFunctions::print("enemy touches another enemy ...");
+	}
 }
 
 void Bunker::onMouseEntered()

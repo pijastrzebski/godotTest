@@ -48,23 +48,23 @@ void Enemy::onCollision(Area2D* area)
 
 	// collision effects
 	auto areaName = area->get_parent()->get_name();
-	UtilityFunctions::print("enemy collision detected with: ", areaName);
-	
-	if (auto sprite = get_node<AnimatedSprite2D>("Sprite"); sprite)
+	if (areaName.contains("Bullet"))
 	{
-		if (areaName.contains("Bullet"))
+		UtilityFunctions::print("got hit by bullet");
+		get_parent()->queue_free();
+	}
+	else if (areaName.contains("Bunker")) 
+	{
+		UtilityFunctions::print("enemy attacks");
+		if (auto sprite = get_node<AnimatedSprite2D>("Sprite"); sprite)
 		{
-			UtilityFunctions::print("got hit by bullet");
-			get_parent()->queue_free();
-		}
-		else if (areaName.contains("Bunker")) {
-			UtilityFunctions::print("enemy attacks");
 			sprite->play("attack");
 		}
-		else if (areaName.contains("Enemy"))
-		{
-			UtilityFunctions::print("enemy touches another enemy ...");
-		}
+		move(-30);
+	}
+	else if (areaName.contains("Enemy"))
+	{
+		UtilityFunctions::print("enemy touches another enemy ...");
 	}
 }
 
@@ -76,4 +76,14 @@ PathFollow2D* Enemy::getPathFollow() const
 	}
 
 	return m_path->get_node<PathFollow2D>("EnemyPathLeft/PathFollow");
+}
+
+double Enemy::getAttack() const
+{
+	return m_stats.attack;
+}
+
+void Enemy::move(float progress)
+{
+	m_pathProgress += progress;
 }

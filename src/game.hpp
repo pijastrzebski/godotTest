@@ -14,6 +14,7 @@ public:
 	void _process(double delta) override;
 	void _ready() override;
 
+	void gameOver();
 protected:
 	static void _bind_methods();
 
