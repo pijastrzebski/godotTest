@@ -38,6 +38,7 @@ set(SRC_FILES
   src/enemybuilder.cpp
   src/enemy.cpp
   src/player.cpp
+  src/hud.cpp
 )
 
 # Add header files
@@ -66,6 +67,7 @@ set(HEADER_FILES
   src/enemybuilder.hpp
   src/enemy.hpp
   src/player.hpp
+  src/hud.hpp
 )
 
 # Add executable target

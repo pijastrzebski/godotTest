@@ -5,9 +5,10 @@
 [ext_resource type="Texture2D" uid="uid://byeorcu2huxc2" path="res://assets/hud/progress-bar-white.png" id="3_qahkr"]
 [ext_resource type="Texture2D" uid="uid://d4bicnevxinvp" path="res://assets/hud/progress-bar-white-filled.png" id="4_sgiw7"]
 
-[node name="HUD" type="CanvasLayer"]
+[node name="HUD" type="HUD"]
 
 [node name="main" type="Control" parent="."]
+modulate = Color(1, 1, 1, 0.784314)
 layout_mode = 3
 anchors_preset = 0
 offset_top = 24.0
