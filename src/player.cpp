@@ -1,6 +1,7 @@
 #include "player.hpp"
 
 #include "game.hpp"
+#include "hud.hpp"
 #include "godot_cpp/classes/canvas_layer.hpp"
 #include "godot_cpp/classes/rich_text_label.hpp"
 #include "godot_cpp/classes/texture_progress_bar.hpp"
@@ -42,7 +43,7 @@ void Player::_bind_methods()
 
 void Player::updateHPBar(double hp)
 {
-	auto hud = get_parent()->get_node<CanvasLayer>("HUD");
+	auto hud = get_parent()->get_node<HUD>("HUD");
 	// HP
 	auto hpBar = hud->get_node<TextureProgressBar>("main/hpBar/progress");
 	hpBar->set_value(hp);
@@ -52,7 +53,7 @@ void Player::updateHPBar(double hp)
 
 void Player::updateXPBar(double xp)
 {
-	auto hud = get_parent()->get_node<CanvasLayer>("HUD");
+	auto hud = get_parent()->get_node<HUD>("HUD");
 	auto xpBar = hud->get_node<TextureProgressBar>("main/xpBar/progress");
 	xpBar->set_value(m_stats.xp);
 	auto xpText = xpBar->get_node<RichTextLabel>("text");

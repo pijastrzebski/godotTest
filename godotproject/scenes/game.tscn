@@ -10,7 +10,7 @@ position = Vector2(-94, 0)
 [node name="HUD" parent="." instance=ExtResource("1_ca5pn")]
 
 [node name="Camera2D" type="Camera2D" parent="."]
-offset = Vector2(0, 158.514)
+offset = Vector2(0, 159.233)
 limit_bottom = 150
 limit_smoothed = true
 position_smoothing_enabled = true

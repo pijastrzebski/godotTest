@@ -1,12 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://dsxinadxlitxb"]
-
-[ext_resource type="PackedScene" uid="uid://c62ose8gn8lgr" path="res://scenes/menu.tscn" id="1_5o8qb"]
+[gd_scene format=3 uid="uid://dsxinadxlitxb"]
 
 [node name="Main" type="Main"]
 position = Vector2(0, 1)
-
-[node name="Menu" parent="." instance=ExtResource("1_5o8qb")]
-offset_left = -16.0
-offset_top = -9.0
-offset_right = 24.0
-offset_bottom = 31.0

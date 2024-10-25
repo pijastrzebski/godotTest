@@ -13,15 +13,15 @@ size_flags_vertical = 4
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
-[node name="goBack" type="Title" parent="."]
+[node name="goBack" type="RichTextLabel" parent="."]
 layout_mode = 2
 offset_left = -559.0
 offset_top = -304.0
-offset_right = -347.0
-offset_bottom = -276.0
+offset_right = -242.0
+offset_bottom = -262.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 bbcode_enabled = true
-text = "[font_size=30] [wave amp=25 connected=0] The Bunker "
+text = "[font_size=30] press [esc] to go back"
 fit_content = true
 autowrap_mode = 0

@@ -24,8 +24,6 @@ void StartButton::_bind_methods()
 
 void StartButton::start()
 {
-	//get_tree()->change_scene_to_file("res://scenes/game.tscn");
-
 	closeGame();
 
 	Ref<PackedScene> ref = ResourceLoader::get_singleton()->load("res://scenes/game.tscn");
@@ -36,7 +34,6 @@ void StartButton::start()
 		auto mainNode = get_node<Node2D>("/root/Main");
 		mainNode->add_child(game);
 
-		//auto menuNode = get_parent()->get_parent();
 		auto menuNode = get_node<Menu>("/root/Main/Menu");
 		menuNode->get_parent()->remove_child(menuNode);
 		menuNode->queue_free();

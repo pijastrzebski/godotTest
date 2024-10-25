@@ -1,5 +1,7 @@
 #include "game.hpp"
 
+#include "hud.hpp"
+#include "main.hpp"
 #include "menu.hpp"
 #include "title.hpp"
 #include "godot_cpp/classes/animated_sprite2d.hpp"
@@ -15,8 +17,8 @@ constexpr auto ZOOM_SPEED = 1;
 constexpr auto OFFSET_SPEED = 500;
 constexpr auto DEFAULT_CAMERA_OFFSET_X = 0;
 constexpr auto DEFAULT_CAMERA_OFFSET_Y = 150;
-constexpr auto DEFAULT_CAMERA_ZOOM_X = 2;
-constexpr auto DEFAULT_CAMERA_ZOOM_Y = 2;
+constexpr auto DEFAULT_CAMERA_ZOOM_X = 1;
+constexpr auto DEFAULT_CAMERA_ZOOM_Y = 1;
 
 Game::Game() :
 	m_keyPressed(false),
@@ -116,13 +118,9 @@ void Game::getInput(float delta)
 		auto menu = get_node_or_null("/root/Main/Menu");
 		if (!menu)
 		{
-			UtilityFunctions::print("menu detected");
 			// make this scene transparent
-			auto canvas = cast_to<CanvasItem>(this);
-			if (canvas)
-			{
-				canvas->set_modulate(Color(1, 1, 1, 0.2f));
-			}
+				set_modulate(Color(1, 1, 1, 0.2f));
+				get_node<HUD>("HUD")->set_visible(false);
 
 			// todo: pause all related nodes
 
@@ -130,12 +128,13 @@ void Game::getInput(float delta)
 			Ref<PackedScene> ref = ResourceLoader::get_singleton()->load("res://scenes/menu.tscn");
 			if (ref->can_instantiate())
 			{
-				get_parent()->add_child(ref->instantiate());
+				auto main = get_node<Main>("/root/Main");
+				auto menu = ref->instantiate();
+				main->add_child(menu);
 			}
 		}
 		else
 		{
-			UtilityFunctions::print("there's no menu");
 			restoreOpacity();
 
 			// clean menu
@@ -158,6 +157,8 @@ void Game::gameOver()
 			canvas->set_modulate(Color(1, 1, 1, 0.2f));
 		}
 
+		// todo pause game
+
 		// create menu
 		Ref<PackedScene> ref = ResourceLoader::get_singleton()->load("res://scenes/menu.tscn");
 		if (ref->can_instantiate())
@@ -165,15 +166,15 @@ void Game::gameOver()
 			menu = ref->instantiate();
 			get_parent()->add_child(menu);
 			Title* title = cast_to<Menu>(menu)->get_node<Title>("VBoxContainer/title");
-			title->set_text("[font_size=60] [wave amp=25 connected=0] GAME OVER ");
+			title->set_text("[font_size=30] [wave amp=5 connected=0] GAME OVER ");
+			// todo create game over scene
 		}
 	}
 }
 
 void Game::restoreOpacity()
 {
-	auto canvas = cast_to<CanvasItem>(this);
-	if (canvas)
+	if (auto canvas = cast_to<CanvasItem>(this); canvas)
 	{
 		canvas->set_modulate(Color(1, 1, 1, 1));
 	}
