@@ -7,8 +7,10 @@ _data = {
 point_count = 8
 
 [node name="EnemyPaths" type="Node2D"]
+position = Vector2(3, 191)
 
 [node name="EnemyPathLeft" type="Path2D" parent="."]
+position = Vector2(-8, -184)
 curve = SubResource("Curve2D_ucw75")
 
 [node name="PathFollow" type="PathFollow2D" parent="EnemyPathLeft"]

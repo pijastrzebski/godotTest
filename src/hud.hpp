@@ -1,12 +1,12 @@
 #pragma once
 
-#include "godot_cpp/classes/canvas_layer.hpp"
+#include "godot_cpp/classes/control.hpp"
 
 using namespace godot;
 
-class HUD : public CanvasLayer
+class HUD : public Control
 {
-	GDCLASS(HUD, CanvasLayer)
+	GDCLASS(HUD, Control)
 
 public:
 	void _process(double delta) override;

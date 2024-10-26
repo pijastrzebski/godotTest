@@ -16,7 +16,7 @@
 constexpr auto ZOOM_SPEED = 1;
 constexpr auto OFFSET_SPEED = 500;
 constexpr auto DEFAULT_CAMERA_OFFSET_X = 0;
-constexpr auto DEFAULT_CAMERA_OFFSET_Y = 150;
+constexpr auto DEFAULT_CAMERA_OFFSET_Y = 0;
 constexpr auto DEFAULT_CAMERA_ZOOM_X = 1;
 constexpr auto DEFAULT_CAMERA_ZOOM_Y = 1;
 
@@ -34,8 +34,6 @@ void Game::_process(double delta)
 
 void Game::_ready()
 {
-	restoreOpacity();
-	restoreCamera();
 }
 
 void Game::_bind_methods()
@@ -120,7 +118,6 @@ void Game::getInput(float delta)
 		{
 			// make this scene transparent
 				set_modulate(Color(1, 1, 1, 0.2f));
-				get_node<HUD>("HUD")->set_visible(false);
 
 			// todo: pause all related nodes
 

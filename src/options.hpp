@@ -1,12 +1,12 @@
 #pragma once
 
-#include "godotcustomcontrol.hpp"
+#include "godot_cpp/classes/control.hpp"
 
 using namespace godot;
 
-class Options : public GodotCustomControl
+class Options : public Control
 {
-	GDCLASS(Options, GodotCustomControl)
+	GDCLASS(Options, Control)
 
 public:
 	void _process(double delta) override;

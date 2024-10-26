@@ -11,9 +11,10 @@
 modulate = Color(1, 1, 1, 0.784314)
 layout_mode = 3
 anchors_preset = 0
-offset_top = 24.0
-offset_right = 1136.0
-offset_bottom = 623.0
+offset_left = -568.0
+offset_top = -272.0
+offset_right = 568.0
+offset_bottom = 327.0
 size_flags_horizontal = 6
 size_flags_vertical = 4
 

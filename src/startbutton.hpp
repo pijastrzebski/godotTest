@@ -1,12 +1,12 @@
 #pragma once
 
-#include "godotcustombutton.hpp"
+#include "godot_cpp/classes/button.hpp"
 
 using namespace godot;
 
-class StartButton : public GodotCustomButton
+class StartButton : public Button
 {
-	GDCLASS(StartButton, GodotCustomButton)
+	GDCLASS(StartButton, Button)
 
 public:
 	void _process(double delta) override;

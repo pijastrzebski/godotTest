@@ -5,13 +5,10 @@
 [ext_resource type="Texture2D" uid="uid://cbh0yjd13odaj" path="res://assets/background/landscape_outer_planet-2.png" id="1_svctp"]
 
 [node name="Game" type="Game"]
-position = Vector2(-94, 0)
-
-[node name="HUD" parent="." instance=ExtResource("1_ca5pn")]
 
 [node name="Camera2D" type="Camera2D" parent="."]
-offset = Vector2(0, 159.233)
-limit_bottom = 150
+position = Vector2(6, 0)
+limit_bottom = 300
 limit_smoothed = true
 position_smoothing_enabled = true
 position_smoothing_speed = 2.0
@@ -37,3 +34,5 @@ polygon = PackedVector2Array(-584, 224, -456, 248, -336, 200, -256, 216, -168, 2
 [node name="SpawnTimer" type="Timer" parent="EnemyBuilder"]
 wait_time = 5.0
 one_shot = true
+
+[node name="HUD" parent="." instance=ExtResource("1_ca5pn")]

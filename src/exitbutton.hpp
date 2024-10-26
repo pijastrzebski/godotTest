@@ -1,12 +1,12 @@
 #pragma once
 
-#include "godotcustombutton.hpp"
+#include "godot_cpp/classes/button.hpp"
 
 using namespace godot;
 
-class ExitButton : public GodotCustomButton
+class ExitButton : public Button
 {
-	GDCLASS(ExitButton, GodotCustomButton)
+	GDCLASS(ExitButton, Button)
 
 public:
 	void _process(double delta) override;

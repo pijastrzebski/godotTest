@@ -1,12 +1,12 @@
 #pragma once
 
-#include "godotcustomcontrol.hpp"
+#include "godot_cpp/classes/control.hpp"
 
 using namespace godot;
 
-class Menu : public GodotCustomControl
+class Menu : public Control
 {
-	GDCLASS(Menu, GodotCustomControl)
+	GDCLASS(Menu, Control)
 
 public:
 	void _process(double delta) override;
@@ -14,7 +14,4 @@ public:
 
 protected:
 	static void _bind_methods();
-
-	void getInput();
-
 };
